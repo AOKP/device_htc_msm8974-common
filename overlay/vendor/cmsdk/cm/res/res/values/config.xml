@@ -27,6 +27,7 @@
     <integer name="config_outdoorAmbientLux">12000</integer>
 
     <bool name="config_proximityCheckOnWake">true</bool>
+    <integer name="config_proximityCheckTimeout">650</integer>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
     <!-- All the capabilities of the LEDs on this device, stored as a bit field.
