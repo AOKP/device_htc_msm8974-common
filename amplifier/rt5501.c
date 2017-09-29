@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2013-2015 The CyanogenMod Project
- *               2017 The LineageOS Project
+ * Copyright (C) 2013, The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +14,19 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "rt5506"
+#define LOG_TAG "rt5501"
 //#define LOG_NDEBUG 0
 
-#include "rt5506.h"
+#include <errno.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
+#include <fcntl.h>
 
-#include <linux/rt5506.h>
+#include <system/audio.h>
 
 #include <cutils/log.h>
 
-#include <errno.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <sys/ioctl.h>
+#include "rt5501.h"
 
 static struct rt55xx_config rt55xx_playback_config = {
     .reg_len = 10,
@@ -90,7 +89,7 @@ static struct rt55xx_config rt55xx_voice_config = {
     },
 };
 
-int rt5506_open(void)
+int rt55xx_open(void)
 {
     int fd;
     int rc = 0;
@@ -139,7 +138,7 @@ open_err:
     return rc;
 }
 
-int rt5506_set_mode(audio_mode_t mode) {
+int rt55xx_set_mode(audio_mode_t mode) {
     int headsetohm = HEADSET_OM_UNDER_DETECT;
     int fd, amp_mode;
     int rc = 0;
